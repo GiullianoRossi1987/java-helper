@@ -1,0 +1,6 @@
+# Data about the project, and used to compile/run
+MAIN_CLASS="./core/main.sh"
+CLASSPATH="lib/*:out:."
+PROJECT_NAME="java-helper"
+SOURCES_FOLDER="./"
+CLASSES_FOLDER="./"

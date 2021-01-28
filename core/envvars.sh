@@ -1,3 +1,4 @@
 #!/usr/bin/bash
 
-TESTE="YAMERO"
+DATA_FILE=".helper"
+
