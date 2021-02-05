@@ -189,7 +189,7 @@ function run(){
 function getProjectData(){
 	if [ ! -f "./.helper" ]; then echo "Can't load file helper, your project have to be created before!"; exit -1; fi
 	source .helper
-	# TODO
+	
 }
 
 
