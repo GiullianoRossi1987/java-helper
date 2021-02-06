@@ -65,5 +65,3 @@ function setHelper(){
 	echo "Project setted up successfully UwU"
 
 }
-
-

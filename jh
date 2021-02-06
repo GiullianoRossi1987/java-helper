@@ -1,0 +1,73 @@
+#!/usr/bin/bash
+source /usr/lib/java-helper/core/main.sh
+source /usr/lib/java-helper/core/no-display.sh
+source /etc/java-helper/helper_data.conf
+if [ -f ./.helper ]; then source .helper; fi  # Checks if the .helper configurations file exists, if it exists will load it
+
+# loads the .helper file configurations
+
+
+# Loads the optional flags first
+# Flags
+# -h -> Shows help text
+# -d -> Shows the data about the Helper
+
+
+# local OPTIND
+while getopts "hd" flg "$@"; do
+	case "$flg" in
+		h)
+			echo $(cat /etc/java-helper/docs/help.txt)
+			exit 1
+			;;
+		d)
+			echo -e "Java Helper Version $VERSION\nCreated by: $AUTHOR\nCreated in:$DEV_IN\nUsing display lib: $DISPLAY_MODE\nVerbose mode: $VERBOSE"
+			exit 1
+			;;
+	esac
+done
+
+# Starts the program properly
+if [ "$1" == "init" ]; then
+	if [ -f ./.helper ]; then 
+		echo "The project was already started by the helper UwU"
+		exit 1
+	else
+		if [ $DISPLAY_MODE ]; then setHelperData
+		else
+			if [ "$2" != "" ] && [ "$3" != "" ] && [ "$4" != "" ] && [ "$5" != "" ]; then
+				setHelper -c $2 -s $3 -o $4 -p $4 -m $5 
+			else
+				if [ "$2" == "--help" ]; then setHelper -h
+				else
+					setHelper # normal without the options, to a more free experience
+				fi	
+			fi
+		fi
+	fi
+else
+	if [ "$1" == "run" ]; then
+		if [ -f ./.helper ]; then run; else echo "There's no project to run, please start a project first!"; exit -1; fi
+	else
+		if [ "$1" == "compile" ]; then
+			if [ -f ./.helper ]; then compile; else echo "There's no project sources to compile, please start a project first!"; exit -1; fi
+		else
+			if [ $1 == "status" ]; then
+				if [ -f ./.helper ]; then
+					source .helper
+					echo -e "Showing data of the project $PROJECT_NAME\nMain Java Class: $MAIN_CLASS\nClasspath: $CLASSPATH\nSources folder: $SOURCES_FOLDER\nOutput classes folder: $CLASSES_FOLDER"
+				else
+					echo "There's no project started! Please start a project"
+					exit -1
+				fi
+			else
+				
+				echo "Invalid option for the helper, try '-h' argumment for get help"
+				exit -1
+			fi
+		fi
+	fi
+fi
+
+
+

@@ -1,2 +1,6 @@
-#!/usr/bin/bash
-
+# Data about the project, and used to compile/run
+MAIN_CLASS=""
+CLASSPATH=""
+PROJECT_NAME=""
+SOURCES_FOLDER=""
+CLASSES_FOLDER=""

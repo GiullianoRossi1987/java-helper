@@ -136,8 +136,7 @@ function setHelperData(){
 	dialog --clear --msgbox "Helper configurations done!" 8 40
 
 }
-
-	function genCompileScript(){
+function genCompileScript(){
 	if [ ! -f "./.helper" ]; then echo "Can't load file .helper, your project have to be created before"; exit -1 ;fi
 
 	source .helper
@@ -189,7 +188,6 @@ function run(){
 function getProjectData(){
 	if [ ! -f "./.helper" ]; then echo "Can't load file helper, your project have to be created before!"; exit -1; fi
 	source .helper
-	
 }
 
 
