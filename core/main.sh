@@ -137,7 +137,7 @@ function setHelperData(){
 
 }
 
-function genCompileScript(){
+	function genCompileScript(){
 	if [ ! -f "./.helper" ]; then echo "Can't load file .helper, your project have to be created before"; exit -1 ;fi
 
 	source .helper
